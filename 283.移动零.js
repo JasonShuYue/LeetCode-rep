@@ -32,5 +32,27 @@ var moveZeroes = function(nums) {
     return nums
 };
 
+
+// 思路2：模拟「插入排序」算法，从后向前遍历，找到第一个不为0的数，插入到其后面
+// 因为题目中说「保持非0元素相对位置不变」，所以联想到了「稳定排序」
+
+
+var moveZeroes = function(nums) {
+    if (nums.length < 2) return nums;
+
+    for(let i = 1; i < nums.length; i++) {
+        if(nums[i] != 0) {
+            temp = nums[i];
+            for(var j = i; j > 0 && nums[j-1] == 0; j--) {
+                nums[j] = nums[j - 1]
+            }
+            nums[j] = temp
+        }
+    }
+
+    return nums
+}
+
+
 // @lc code=end
 
