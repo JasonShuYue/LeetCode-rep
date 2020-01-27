@@ -39,7 +39,6 @@ var moveZeroes = function(nums) {
 
 var moveZeroes = function(nums) {
     if (nums.length < 2) return nums;
-
     for(let i = 1; i < nums.length; i++) {
         if(nums[i] != 0) {
             temp = nums[i];
