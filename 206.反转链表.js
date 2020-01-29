@@ -17,24 +17,66 @@
  * @return {ListNode}
  */
 // 1. 三个指针
+// var reverseList = function(head) {
+//     if(head == null || head.next == null) return head;
+
+//     let pre = null;
+//     let cur = head;
+//     let next;
+
+//     while(cur !== null) {
+//         next = cur.next;
+//         cur.next = pre;
+//         pre = cur;
+//         cur = next;
+//     }
+
+//     return pre
+// };
+
+
+// 2. 借用「堆栈」
 var reverseList = function(head) {
     if(head == null || head.next == null) return head;
 
-    let p = null;
-    let q = head;
-    let l;
+    let stack = [];
+    let p = head;
+    let isFist = true;
+    let newHead;
 
-    while(q !== null) {
-        if(q.next !== null) {
-            l = q.next;
-            q.next = p;
-            p = q;
-            q = l;
+    while(p !== null) {
+        stack.push(p.val);
+        p = p.next;
+    }
+
+    while(stack.length > 0) {
+        let val = stack.pop();
+        let newNode = new ListNode(val);
+        if(isFist) {
+            newHead = newNode
+            p = newNode;
+            isFist = false;
         } else {
-            q.next = p;
-            return q;
+            p.next = newNode;
+            p = newNode;
         }
     }
+
+    return newHead;
 };
+
+// 3. 递归
+var reverseList = function(head) {
+    if(head == null || head.next == null) return head;
+
+    let cur = reverseList(head.next);
+
+    head.next.next = head; // 函数内部，将「当前node」和「下一个node」指针对调
+
+    head.next = null; // 将「当前node」的next指向「null」
+
+    return cur;
+};
+
 // @lc code=end
 
