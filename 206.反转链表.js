@@ -17,22 +17,22 @@
  * @return {ListNode}
  */
 // 1. 三个指针
-// var reverseList = function(head) {
-//     if(head == null || head.next == null) return head;
+var reverseList = function(head) {
+    if(head == null || head.next == null) return head;
 
-//     let pre = null;
-//     let cur = head;
-//     let next;
+    let pre = null;
+    let cur = head;
+    let next;
 
-//     while(cur !== null) {
-//         next = cur.next;
-//         cur.next = pre;
-//         pre = cur;
-//         cur = next;
-//     }
+    while(cur !== null) {
+        next = cur.next;
+        cur.next = pre;
+        pre = cur;
+        cur = next;
+    }
 
-//     return pre
-// };
+    return pre
+};
 
 
 // 2. 借用「堆栈」
