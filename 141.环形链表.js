@@ -20,7 +20,7 @@
 
 //  快慢指针
 var hasCycle = function(head) {
-    if(head == null || head.next == 0) return false;
+    if(head == null || head.next == null) return false;
 
     let slow = head;
     let fast = head.next;
@@ -33,6 +33,22 @@ var hasCycle = function(head) {
 
     return false;
 
+};
+
+
+var hasCycle = function(head) {
+    if(head == null || head.next == null) return false;
+
+    let slow = head;
+    let fast = head.next.next;
+
+    while(fast !== null && fast.next !== null) {
+        if(slow == fast) return true;
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+
+    return false;
 
 };
 // @lc code=end
