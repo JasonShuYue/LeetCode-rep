@@ -18,18 +18,19 @@ var moveZeroes = function(nums) {
 
     var i = 0;
     var j = 0;
-    var temp;
 
-    for(; i < nums.length; i++) {
-        if(nums[i] != 0) {
-            nums[j++] = nums[i]
+    while(j < nums.length) {
+        if(nums[j] !== 0) {
+            nums[i++] = nums[j];
         }
+        j++;
     }
 
-    for(; j < nums.length; j++) {
-        nums[j] = 0
+    while(i < nums.length) {
+        nums[i++] = 0;
     }
-    return nums
+
+    return nums;
 };
 
 
@@ -38,18 +39,19 @@ var moveZeroes = function(nums) {
 
 
 var moveZeroes = function(nums) {
-    if (nums.length < 2) return nums;
+    if(nums.length < 2) return nums;
+
     for(let i = 1; i < nums.length; i++) {
-        if(nums[i] != 0) {
-            temp = nums[i];
-            for(var j = i; j > 0 && nums[j-1] == 0; j--) {
-                nums[j] = nums[j - 1]
-            }
-            nums[j] = temp
+        let temp = nums[i];
+
+        for(var j = i; j >=0 && nums[j - 1]=== 0; j--) {
+            nums[j] = nums[j - 1];
         }
+        
+        nums[j] = temp;
     }
 
-    return nums
+    return nums;
 }
 
 
