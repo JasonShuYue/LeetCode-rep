@@ -29,18 +29,19 @@ var maxArea = function(height) {
 
 // 2. 夹逼准则
 var maxArea = function(height) {
-    let maxSize = 0;
+    var i = 0;
+    var j = height.length - 1;
+    var h = height[i] < height[j] ? height[i] : height[j];
+    var max = (j - i) * h;
 
-    for(let i = 0, j = height.length - 1; i < j;) {
-        let minHeight = height[i] < height[j] ? height[i++] : height[j--];
-        let area = minHeight * (j - i + 1);
-        maxSize = maxSize < area ? area : maxSize;
-        console.log(area, i, j)
+    while(i < j) {
         
+        h = height[i] < height[j] ? height[i++] : height[j--];
+        let size = (j - i + 1) * h;
+        max = max > size ? max : size;
     }
 
-
-    return maxSize;
+    return max
 }
 
 // @lc code=end
